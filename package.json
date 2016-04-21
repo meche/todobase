@@ -1,0 +1,25 @@
+{
+  "name": "todobase",
+  "version": "1.0.0",
+  "description": "todo list",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meche/todobase.git"
+  },
+  "author": "Leandro Alexandrino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meche/todobase/issues"
+  },
+  "homepage": "https://github.com/meche/todobase#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
