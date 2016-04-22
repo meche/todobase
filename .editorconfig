@@ -1,0 +1,14 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+[dev/javascript/**.js]
+indent_style = space
+indent_size = 2
+
+[**.{styl,jade}]
+indent_style = space
+indent_size = 4
