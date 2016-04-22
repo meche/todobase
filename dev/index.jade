@@ -1,7 +1,9 @@
 doctype html
-html
+html(ng-app="todoBase")
     include ./templates/header.jade
-    body
-        h1 hello world
-        p nono nono no nn o no no nasaon n o o
+    body(ng-controller="todoBaseCtrl")
+        header 
+            h1 {{app}}
+            p {{description}}
+        include ./templates/todo.jade
         include ./templates/footer.jade

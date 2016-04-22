@@ -102,7 +102,9 @@ gulp.task( 'jade', function() {
 gulp.task('compress', function() {
     return gulp.src( jadeForest.js )
         .pipe( plumber() )
-        .pipe( uglify() )
+        .pipe( uglify( {
+            mangle: false
+        } ) )
         .pipe( concat('app.js') )
         .pipe( plumber.stop() )
         .pipe(gulp.dest( eternalBlossoms.js ) )

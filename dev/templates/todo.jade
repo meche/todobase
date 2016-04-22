@@ -1,0 +1,9 @@
+main
+    .todo-list(ng-show="todos.length > 0")
+        .todos(ng-repeat="todo in todos")
+            input(type="checkbox", ng-model="todo.selected")
+            p {{todo.task}}
+    input(type="text", ng-model="todo.task", placeholder="Task")
+    button(ng-click="addTodo(todo)", ng-disabled="!todo.task") Add Task
+    button(ng-click="removeTodos(todos)", ng-if="isTodoSelected(todos)") Delete Task
+

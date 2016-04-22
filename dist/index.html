@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="todoBase">
   <head>
     <title>testando</title>
     <link href="stylesheet/style.css" rel="stylesheet">
   </head>
-  <body>
-    <h1>hello world</h1>
-    <p>nono nono no nn o no no nasaon n o o</p>
-    <footer><small>MIT Leandro Alexandrino</small>
-      <script src="lib/angular.js"></script>
-      <script src="javascript/app.js"></script>
-    </footer>
+  <body ng-controller="todoBaseCtrl">
+    <header> 
+      <h1>{{app}}</h1>
+      <p>{{description}}</p>
+    </header>
+    <main>
+      <div ng-show="todos.length &gt; 0" class="todo-list">
+        <div ng-repeat="todo in todos" class="todos">
+          <input type="checkbox" ng-model="todo.selected">
+          <p>{{todo.task}}</p>
+        </div>
+      </div>
+      <input type="text" ng-model="todo.task" placeholder="Task">
+      <button ng-click="addTodo(todo)" ng-disabled="!todo.task">Add Task</button>
+      <button ng-click="removeTodos(todos)" ng-if="isTodoSelected(todos)">Delete Task</button>
+    </main>
+    <footer><small>MIT Leandro Alexandrino</small></footer>
+    <script src="lib/angular.js"></script>
+    <script src="javascript/app.js"></script>
   </body>
 </html>

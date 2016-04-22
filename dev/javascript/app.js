@@ -1,1 +1,1 @@
-angular.module('todoBase', ['ngRoute'])
+angular.module('todoBase', [])
