@@ -1,13 +1,20 @@
 
 <main>
+  <form name="editForm" class="form">
+    <input type="text" id="task" ng-model="current.task" ng-required="true" ng-show="editForm.$valid" value="{{current.task}}" class="form__input"/>
+    <button ng-show="editForm.$valid" ng-click="saveEdit(todo)" class="form__button">Save Edit</button>
+  </form>
   <div ng-show="todos.length &gt; 0" class="todo-list">
     <div ng-repeat="todo in todos" class="todos">
-      <input type="checkbox" ng-model="todo.selected"/>
-      <p>{{todo.task}}</p>
-      <p>editar</p>
+      <div class="todos-list">
+        <input type="checkbox" ng-model="todo.selected" class="todos-list__check"/>
+        <p class="todos-list__text">{{todo.task}}</p>
+      </div>
+      <div class="todos-controllers"><a ng-click="editTodo(todo)" href="#" class="todos-controllers__edit">edit</a><a ng-click="removeTodo(todo)" href="#" class="todos-controllers__delete">delete</a></div>
     </div>
   </div>
-  <input type="text" ng-model="todo.task" placeholder="Task"/>
-  <button ng-click="addTodo(todo)" ng-disabled="!todo.task">Add Task</button>
-  <button ng-click="removeTodos(todos)" ng-if="isTodoSelected(todos)">Delete Task</button>
+  <form name="insertForm" class="form">
+    <input type="text" ng-model="todo.task" ng-required="true" placeholder="Task" class="form__input"/>
+    <button ng-click="addTodo(todo)" ng-disabled="insertForm.$invalid" class="form__button">Add Task</button>
+  </form>
 </main>

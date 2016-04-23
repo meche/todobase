@@ -1,2 +1,88 @@
-h1
-  font-size 100px
+header
+    center(600px)
+    color $text-light
+    +below(600px)
+        width 100%
+        overflow hidden
+    h1
+        font-family $roboto
+        font-size 5em
+        text-align center
+        +below(600px)
+            font-size 3em
+    p
+        font-family $roboto
+        font-size .7em
+        letter-spacing .2em
+        text-transform uppercase
+        text-align center
+.todo-list
+    center(600px)
+    display flex
+    flex-flow column nowrap
+    align-items center
+    +below(600px)
+        width 100%
+        overflow hidden
+
+.todos
+    width 100%
+    height 45px
+    display flex
+    padding 15px 0 15px 15px
+    flex-flow row nowrap
+    justify-content space-between
+    align-items center
+    font-family $roboto
+    font-weight 300
+    color $text-light
+    overflow hidden
+    &:nth-child(2n+1)
+        background rgba(200, 200, 200, 0.1)
+    +below(600px)
+        height auto
+        flex-flow column wrap
+        overflow visible
+
+.todos-list
+    width 100%
+    display flex
+    flex-flow row nowrap
+    justify-content flex-start
+    align-items center
+    &__check
+        width 44px
+        height 44px
+        border 0
+        background #525252
+    &__text
+        width 100%
+        height 44px
+        font-size 2em
+        text-transform uppercase
+        overflow hidden
+        margin-left: 15px
+        +below(600px)
+            height auto
+            overflow visible
+    input[type=checkbox]:checked + .todos-list__text
+        text-decoration line-through
+        opacity 0.3
+
+ .todos-controllers
+    text-transform uppercase
+    +below(600px)
+        margin-top 44px
+    &__edit
+        padding 25px
+        background #2980b9
+        +below(600px)
+            padding 10px
+    &__delete
+        padding 25px
+        background #c0392b
+        +below(600px)
+            padding 10px
+    a
+        color $text-light
+        text-decoration none

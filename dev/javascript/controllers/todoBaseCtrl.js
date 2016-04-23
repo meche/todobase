@@ -1,23 +1,31 @@
 angular.module("todoBase").controller("todoBaseCtrl", function ($scope) {
       $scope.app = "todoBase";
+
       $scope.description = "a todo list made with angularjs";
+
       $scope.todos = [
-        {id: 1, task: "Elaborar uma todo list"},
-        {id: 2, task: "Testar a todo list"}
+        {task: "Elaborar uma todo list"},
+        {task: "Testar a todo list"}
       ];
+
       $scope.addTodo = function (todo) {
         $scope.todos.push(angular.copy(todo));
         delete $scope.todo;
       };
-      $scope.removeTodos = function (todos) {
-        $scope.todos = todos.filter (function (todo) {
-          console.log(todo);
-          if (!todo.selected) return todo;
-        });
+
+      $scope.editTodo = function (todo) {
+        $scope.current = todo;
       };
-      $scope.isTodoSelected = function (todos) {
-        return todos.some(function (todo) {
-          return todo.selected;
-        });
+
+      $scope.current = {};
+
+      $scope.saveEdit = function (todo) {
+        $scope.current = {};
+      };
+
+      $scope.removeTodo = function (todo) {
+          var index = $scope.todos.indexOf(todo);
+          alert("Deleting index: " + index);
+          $scope.todos.splice(index, 1);
       };
     });
