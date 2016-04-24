@@ -21,6 +21,7 @@ angular.module("todoBase").controller("todoBaseCtrl", function ($scope) {
 
       $scope.saveEdit = function (todo) {
         $scope.current = {};
+        $scope.editForm.$setPristine();
       };
 
       $scope.removeTodo = function (todo) {
