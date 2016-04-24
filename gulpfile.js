@@ -8,6 +8,7 @@ var concat = require( 'gulp-concat' );
 var htmlMin = require( 'gulp-htmlmin' );
 var imageMin = require( 'gulp-imagemin' );
 var koutoSwiss = require( 'kouto-swiss' );
+var jasmine = require( 'gulp-jasmine' );
 var jade = require( 'gulp-jade' );
 var jeet = require( 'jeet' );
 var jsHint = require( 'gulp-jshint' );
@@ -148,13 +149,22 @@ gulp.task( 'pullTheBoss', [ 'browserSync' ], function() {
 // Copy angular
 //////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('copyAngular', function() {
+gulp.task( 'copyAngular', function() {
     gulp.src( [ jadeForest.angular, jadeForest.angularRoute ] )
         .pipe( concat('angular.js') )
         .pipe( gulp.dest( jadeForest.destAngular ) );
-});
+} );
 
 gulp.task('buildAngular', function() {
     gulp.src( jadeForest.devLib )
         .pipe( gulp.dest( jadeForest.buildAngular ) );
-});
+} );
+
+//
+// Test Jasmine
+//////////////////////////////////////////////////////////////////////////////////////
+
+gulp.task( 'testJasmine', function () {
+    gulp.src( 'tests/todo.js' )
+        .pipe( jasmine() );
+} );
