@@ -4,18 +4,18 @@ main
         class="form",
         name="editForm")
         input(
-        class="form__input",
-        type="text",
-        id="task",
-        name="task",
-        ng-model="current.task",
-        ng-required="true",
-        ng-show="editForm.$valid",
-        value="{{current.task}}")
+            class="form__input",
+            type="text",
+            id="task",
+            name="task",
+            ng-model="current.task",
+            ng-required="true",
+            ng-show="editForm.$valid",
+            value="{{current.task}}")
         button(
-        class="form__button",
-        ng-show="editForm.$valid",
-        ng-click="saveEdit(todo)",) Save Edit
+            class="form__button",
+            ng-show="editForm.$valid",
+            ng-click="saveEdit(todo)",) Save Edit
 
     .todo-list(ng-show="todos.length > 0")
         .todos(ng-repeat="todo in todos")
