@@ -16,6 +16,22 @@ header
         letter-spacing .2em
         text-transform uppercase
         text-align center
+.alert-delete
+    p
+        position absolute
+        top 15px
+        left 15px
+        width 320px
+        padding 7px
+        background #c0392b
+        font-family $roboto
+        line-height 1.4em
+        color $text-light
+        border-radius 7px
+        +below(600px)
+            left 0
+            width 80%
+            text-align center
 .todo-list
     center(600px)
     display flex

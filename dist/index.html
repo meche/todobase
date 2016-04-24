@@ -13,7 +13,7 @@
       <p>{{description}}</p>
     </header>
     <main>
-      <div id="alertDelete"></div>
+      <div id="alertDelete" class="alert-delete"></div>
       <form name="editForm" class="form">
         <input type="text" id="task" name="task" ng-model="current.task" ng-required="true" ng-show="editForm.$valid" value="{{current.task}}" class="form__input">
         <button ng-show="editForm.$valid" ng-click="saveEdit(todo)" class="form__button">Save Edit</button>
