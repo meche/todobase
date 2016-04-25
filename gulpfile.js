@@ -156,38 +156,6 @@ gulp.task('buildAngular', function() {
 } );
 
 //
-// Test Karma with Jasmine
-//////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task( 'serverKarma', function () {
-    gulp.src( [
-       'dist/**/*.js',
-       'tests/**/*.js'
-    ], { 'read': false } )
-        .pipe( karma.server( {
-            "configFile": './karma.conf.js',
-            "singleRun": false,
-            "quiet": true,
-            "frameworks": [ 'jasmine' ],
-            "browsers": ['Chrome']
-        } ) );
-} );
-
-gulp.task( 'runnerKarma', function () {
-    gulp.src( [
-            'dist/**/*.js',
-            'tests/**/*.js'
-        ], { 'read': false } )
-        .pipe( plumber() )
-        .pipe( karma.runner( {
-            "singleRun": false,
-            "frameworks": [ 'jasmine' ],
-            "browsers": ['Chrome']
-        } ) )
-        .pipe( plumber.stop() );
-} );
-
-//
 // Watch files... PULL THE BOSS!!
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -195,6 +163,5 @@ gulp.task( 'pullTheBoss', [ 'browserSync' ], function() {
     gulp.watch ( jadeForest.css, ['css'] );
     gulp.watch ( jadeForest.js, ['compress'] );
     gulp.watch ( jadeForest.jade, ['jade'] );
-    gulp.watch ( [ 'dev/**/*.js', 'tests/**/*.js' ], [ 'runnerKarma' ] );
     gulp.watch ( jadeForest.html, browserSync.reload );
 } );
