@@ -18,6 +18,13 @@ var sourceMaps = require( 'gulp-sourcemaps' );
 var stylus = require ( 'gulp-stylus' );
 var uglify = require( 'gulp-uglify' );
 
+//
+// THE PATHS:
+//
+// jadeForest = dev paths
+// eternalBlossoms = dist paths
+//////////////////////////////////////////////////////////////////////////////////////
+
 var jadeForest = {
     css: 'dev/stylesheet/**/*.styl',
     cssStylus: 'dev/stylesheet/style.styl',
@@ -29,7 +36,6 @@ var jadeForest = {
     angularRoute: './node_modules/angular-route/angular-route.min.js',
     destAngular: 'dev/lib/',
     devLib: 'dev/lib/**/*.js',
-    buildAngular: 'dist/lib/'
 };
 
 var eternalBlossoms = {
@@ -38,6 +44,7 @@ var eternalBlossoms = {
     js: 'dist/javascript/',
     angular: 'dist/lib',
     dist: 'dist/'
+    buildAngular: 'dist/lib/'
 };
 
 var myReporter = map(function (file, cb) {
@@ -111,7 +118,7 @@ gulp.task('compress', function() {
 } );
 
 //
-// lint javascript
+// Lint javascript
 //////////////////////////////////////////////////////////////////////////////////////
 
 gulp.task( 'lint', function() {
@@ -121,7 +128,7 @@ gulp.task( 'lint', function() {
 } );
 
 //
-// browserSync
+// BrowserSync
 //////////////////////////////////////////////////////////////////////////////////////
 
 gulp.task( 'browserSync', function() {
@@ -132,17 +139,6 @@ gulp.task( 'browserSync', function() {
     } )
 } );
 
-//
-// Watch files... PULL THE BOSS!!
-//////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task( 'pullTheBoss', [ 'browserSync' ], function() {
-    gulp.watch ( jadeForest.css, ['css'] );
-    gulp.watch ( jadeForest.js, ['compress'] );
-    gulp.watch ( jadeForest.jade, ['jade'] );
-    gulp.watch ( [ 'dev/**/*.js', 'tests/**/*.js' ], [ 'runnerKarma' ] );
-    gulp.watch ( jadeForest.html, browserSync.reload );
-} );
 
 //
 // Copy angular
@@ -156,11 +152,11 @@ gulp.task( 'copyAngular', function() {
 
 gulp.task('buildAngular', function() {
     gulp.src( jadeForest.devLib )
-        .pipe( gulp.dest( jadeForest.buildAngular ) );
+        .pipe( gulp.dest( eternalBlossoms.buildAngular ) );
 } );
 
 //
-// Test Jasmine
+// Test Karma with Jasmine
 //////////////////////////////////////////////////////////////////////////////////////
 
 gulp.task( 'serverKarma', function () {
@@ -189,4 +185,16 @@ gulp.task( 'runnerKarma', function () {
             "browsers": ['Chrome']
         } ) )
         .pipe( plumber.stop() );
+} );
+
+//
+// Watch files... PULL THE BOSS!!
+//////////////////////////////////////////////////////////////////////////////////////
+
+gulp.task( 'pullTheBoss', [ 'browserSync' ], function() {
+    gulp.watch ( jadeForest.css, ['css'] );
+    gulp.watch ( jadeForest.js, ['compress'] );
+    gulp.watch ( jadeForest.jade, ['jade'] );
+    gulp.watch ( [ 'dev/**/*.js', 'tests/**/*.js' ], [ 'runnerKarma' ] );
+    gulp.watch ( jadeForest.html, browserSync.reload );
 } );
