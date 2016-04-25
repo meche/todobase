@@ -5,10 +5,8 @@ var autoprefixer = require( 'autoprefixer-stylus' );
 var browserSync = require( 'browser-sync' );
 var clean = require( 'gulp-clean' );
 var concat = require( 'gulp-concat' );
-var htmlMin = require( 'gulp-htmlmin' );
-var imageMin = require( 'gulp-imagemin' );
+var karma = require( 'gulp-karma-runner' );
 var koutoSwiss = require( 'kouto-swiss' );
-var jasmine = require( 'gulp-jasmine' );
 var jade = require( 'gulp-jade' );
 var jeet = require( 'jeet' );
 var jsHint = require( 'gulp-jshint' );
@@ -142,6 +140,7 @@ gulp.task( 'pullTheBoss', [ 'browserSync' ], function() {
     gulp.watch ( jadeForest.css, ['css'] );
     gulp.watch ( jadeForest.js, ['compress'] );
     gulp.watch ( jadeForest.jade, ['jade'] );
+    gulp.watch ( [ 'dev/**/*.js', 'tests/**/*.js' ], [ 'runnerKarma' ] );
     gulp.watch ( jadeForest.html, browserSync.reload );
 } );
 
@@ -164,7 +163,30 @@ gulp.task('buildAngular', function() {
 // Test Jasmine
 //////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task( 'testJasmine', function () {
-    gulp.src( 'tests/todo.js' )
-        .pipe( jasmine() );
+gulp.task( 'serverKarma', function () {
+    gulp.src( [
+       'dist/**/*.js',
+       'tests/**/*.js'
+    ], { 'read': false } )
+        .pipe( karma.server( {
+            "configFile": './karma.conf.js',
+            "singleRun": false,
+            "quiet": true,
+            "frameworks": [ 'jasmine' ],
+            "browsers": ['Chrome']
+        } ) );
+} );
+
+gulp.task( 'runnerKarma', function () {
+    gulp.src( [
+            'dist/**/*.js',
+            'tests/**/*.js'
+        ], { 'read': false } )
+        .pipe( plumber() )
+        .pipe( karma.runner( {
+            "singleRun": false,
+            "frameworks": [ 'jasmine' ],
+            "browsers": ['Chrome']
+        } ) )
+        .pipe( plumber.stop() );
 } );
