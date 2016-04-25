@@ -29,9 +29,10 @@ angular.module("todoBase").controller("todoBaseCtrl", function ($scope) {
           var deleteTask = $scope.todos[index].task;
           var alert = document.getElementById('alertDelete');
           $scope.todos.splice(index, 1);
-          alert.innerHTML = '<p> The Task "' + deleteTask + '" was deleted successfully.</p>';
+          $scope.deleted = 'The task was deleted successfully';
+          document.getElementById('alertDelete').style.display = 'block';
           setTimeout(function(){
-              alert.innerHTML = '';
-          }, 4000);
+            document.getElementById('alertDelete').style.display = 'none';
+          }, 3000);
       };
     });

@@ -144,7 +144,7 @@ gulp.task( 'browserSync', function() {
 //////////////////////////////////////////////////////////////////////////////////////
 
 gulp.task( 'copyAngular', function() {
-    gulp.src( [ jadeForest.angular, jadeForest.angularRoute ] )
+    gulp.src( [ jadeForest.angular, jadeForest.angularRoute, 'node_modules/angular-messages/angular-messages.js' ] )
         .pipe( concat('angular.js') )
         .pipe( gulp.dest( jadeForest.destAngular ) );
 } );

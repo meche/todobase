@@ -1,1 +1,1 @@
-angular.module('todoBase', []);
+angular.module('todoBase', ['ngMessages']);
