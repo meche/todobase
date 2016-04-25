@@ -21,9 +21,11 @@
   "homepage": "https://github.com/meche/todobase#readme",
   "devDependencies": {
     "angular": "^1.5.5",
+    "angular-mocks": "^1.5.5",
     "angular-route": "^1.5.5",
     "autoprefixer-stylus": "^0.9.2",
     "browser-sync": "^2.11.2",
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.2",
@@ -39,8 +41,14 @@
     "gulp-uglify": "^1.5.3",
     "jeet": "^6.1.2",
     "jshint": "^2.9.1",
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.0",
     "kouto-swiss": "^0.12.0",
     "map-stream": "0.0.6",
+    "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.7",
     "rupture": "^0.6.1"
   }
 }

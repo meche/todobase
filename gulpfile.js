@@ -5,7 +5,6 @@ var autoprefixer = require( 'autoprefixer-stylus' );
 var browserSync = require( 'browser-sync' );
 var clean = require( 'gulp-clean' );
 var concat = require( 'gulp-concat' );
-var karma = require( 'gulp-karma-runner' );
 var koutoSwiss = require( 'kouto-swiss' );
 var jade = require( 'gulp-jade' );
 var jeet = require( 'jeet' );
@@ -43,7 +42,7 @@ var eternalBlossoms = {
     img: 'dist/img/',
     js: 'dist/javascript/',
     angular: 'dist/lib',
-    dist: 'dist/'
+    dist: 'dist/',
     buildAngular: 'dist/lib/'
 };
 

@@ -9,7 +9,7 @@ angular.module("todoBase").controller("todoBaseCtrl", function ($scope) {
       ];
 
       $scope.addTodo = function (todo) {
-        $scope.todos.push(angular.copy(todo));
+        $scope.todos.push(todo);
         delete $scope.todo;
       };
 

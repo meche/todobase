@@ -11,6 +11,8 @@ Lista de tarefas
 -   ``` npm install ``` para instalar as dependências;
 -   ``` gulp pullTheBoss ``` para iniciar o ambiente de desenvolvimento;
 
-## Observações
+## Testes
 
-Os testes não estão funcionando, tentei o Karma com Jasmine e não obitive sucesso em sua configuração. Caso queira ajudar... ;)
+-   `karma start`
+
+Os testes não estão funcionando corretamente, tentei o Karma com mocha e chai e não obitive sucesso em sua configuração (principalmente em relação ao chai). Caso possam ajudar ficarei grato! ;)
